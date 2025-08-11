@@ -1,10 +1,35 @@
+// API variables
 const apiKey = "46180124f03d33d3adb83019bf3eae62";
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=`;
 
+// Accessing html elements
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
+// Defining user interaction by mouse click
+searchBtn.addEventListener("click", () => {
+  if (searchBox.value === "") {
+    console.log("empty search box");
+  } else {
+    checkWeather(searchBox.value);
+    searchBox.value = "";
+  }
+});
+
+// Defining user interaction by keyboard enter key
+searchBox.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    if (searchBox.value === "") {
+      console.log("empty search box");
+    } else {
+      checkWeather(searchBox.value);
+      searchBox.value = "";
+    }
+  }
+});
+
+// Function for whole weather api logic
 async function checkWeather(city) {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
   var data = await response.json();
@@ -39,23 +64,3 @@ async function checkWeather(city) {
     weatherIcon.src = "assets/wind.png";
   }
 }
-
-searchBtn.addEventListener("click", () => {
-  if (searchBox.value === "") {
-    console.log("empty search box");
-  } else {
-    checkWeather(searchBox.value);
-    searchBox.value = "";
-  }
-});
-
-searchBox.addEventListener("keydown", (event) => {
-  if (event.key == "Enter") {
-    if (searchBox.value === "") {
-      console.log("empty search box");
-    } else {
-      checkWeather(searchBox.value);
-      searchBox.value = "";
-    }
-  }
-});
