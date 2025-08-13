@@ -7,7 +7,7 @@ const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
-// Defining user interaction by mouse click
+// Defining user interaction by mouse click (or search button)
 searchBtn.addEventListener("click", () => {
   if (searchBox.value === "") {
     console.log("empty search box");
