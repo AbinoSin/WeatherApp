@@ -32,7 +32,7 @@ searchBox.addEventListener("keydown", (event) => {
 // Function for whole weather api logic
 async function checkWeather(city) {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-  var data = await response.json();
+  let data = await response.json();
 
   if (response.status == 404) {
     document.querySelector(".error").style.display = "block";
